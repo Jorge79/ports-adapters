@@ -14,8 +14,8 @@ type ProductInterface interface {
 	GetID() string
 	GetName() string
 	GetStatus() string
-	GetPrice() float64
-	ChangePrice(price float64) error
+	GetPrice() float32
+	ChangePrice(price float32) error
 }
 
 const (
@@ -32,6 +32,18 @@ type Product struct {
 	Name   string  `valid:"required"`
 	Price  float32 `valid:"float,optional"`
 	Status string  `valid:"required"`
+}
+
+func (p *Product) ChangePrice(price float32) error {
+	if p.Price < 0 {
+		return errors.New("price only accept positive numbers")
+	}
+	p.Price = price
+	_, err := p.IsValid()
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 type ProductServiceInterface interface {
@@ -90,9 +102,6 @@ func (p *Product) IsValid() (bool, error) {
 
 	return true, nil
 }
-
-// func (p *Product) ChangePrice(price float64) error {
-// }
 
 func (p *Product) Disable() error {
 	if p.Price == 0 {
