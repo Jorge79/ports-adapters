@@ -22,4 +22,6 @@ func (p *ProductDB) Get(id string) (application.ProductInterface, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	return &product, nil
 }
