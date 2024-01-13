@@ -35,7 +35,7 @@ func (m *MockProductInterface) EXPECT() *MockProductInterfaceMockRecorder {
 }
 
 // ChangePrice mocks base method.
-func (m *MockProductInterface) ChangePrice(price float32) error {
+func (m *MockProductInterface) ChangePrice(price float64) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "ChangePrice", price)
 	ret0, _ := ret[0].(error)
@@ -105,10 +105,10 @@ func (mr *MockProductInterfaceMockRecorder) GetName() *gomock.Call {
 }
 
 // GetPrice mocks base method.
-func (m *MockProductInterface) GetPrice() float32 {
+func (m *MockProductInterface) GetPrice() float64 {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetPrice")
-	ret0, _ := ret[0].(float32)
+	ret0, _ := ret[0].(float64)
 	return ret0
 }
 
@@ -171,7 +171,7 @@ func (m *MockProductServiceInterface) EXPECT() *MockProductServiceInterfaceMockR
 }
 
 // Create mocks base method.
-func (m *MockProductServiceInterface) Create(name string, price float32) (application.ProductInterface, error) {
+func (m *MockProductServiceInterface) Create(name string, price float64) (application.ProductInterface, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Create", name, price)
 	ret0, _ := ret[0].(application.ProductInterface)
