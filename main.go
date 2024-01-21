@@ -1,18 +1,10 @@
+/*
+Copyright © 2024 NAME HERE <EMAIL ADDRESS>
+*/
 package main
 
-import (
-	"database/sql"
-
-	db2 "github.com/Jorge79/ports-adapters/adapters/db"
-	"github.com/Jorge79/ports-adapters/application"
-	_ "github.com/mattn/go-sqlite3"
-)
+import "github.com/Jorge79/ports-adapters/cmd"
 
 func main() {
-	db, _ := sql.Open("sqlite3", "db.sqlite")
-	productDbAdapter := db2.NewProductDb(db)
-	productService := application.NewProductService(productDbAdapter)
-	product, _ := productService.Create("Product Example", 30)
-
-	productService.Enable(product)
+	cmd.Execute()
 }
