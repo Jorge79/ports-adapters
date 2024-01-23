@@ -6,6 +6,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/Jorge79/ports-adapters/adapters/web/handler"
 	"github.com/Jorge79/ports-adapters/application"
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/mux"
@@ -24,6 +25,10 @@ func (w Webserver) Serve() {
 	n := negroni.New(
 		negroni.NewLogger(),
 	)
+
+	handler.MakeProductHandlers(r, n, w.Service)
+	http.Handle("/", r)
+
 	server := &http.Server{
 		ReadHeaderTimeout: 10 * time.Second,
 		WriteTimeout:      10 * time.Second,
