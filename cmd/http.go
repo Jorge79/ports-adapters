@@ -23,7 +23,7 @@ to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		server := server2.MakeNewWebserver()
 		server.Service = &productService
-		fmt.Println("http called")
+		fmt.Println("Webserver has been started")
 		server.Serve()
 	},
 }
