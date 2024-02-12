@@ -1,0 +1,19 @@
+POST http://localhost:9000/product
+Content-Type: application/json
+
+{
+  "Name": "Testando app",
+  "Price": 25.99,
+  "Status": "disabled"
+}
+
+###
+POST http://localhost:9000/product/4656e88b-ace7-468f-8e58-9d0a2f68c1be/enable
+Content-Type: application/json
+
+{
+  "ID": "4656e88b-ace7-468f-8e58-9d0a2f68c1be",
+  "Name": "Testando app",
+  "Price": 25.99,
+  "Status": "disabled"
+}
